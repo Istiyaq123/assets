@@ -587,12 +587,12 @@ body.vjs-full-window {
 
 .vjs-has-started .vjs-control-bar {
   display: flex;
-  visibility: hidden;
+  display: none;
   opacity: 1;
   transition: visibility 0.1s, opacity 0.1s; }
 
 .vjs-has-started.vjs-user-inactive.vjs-playing .vjs-control-bar {
-  visibility: visible;
+  display: none;
   opacity: 0;
   transition: visibility 1s, opacity 1s; }
 
