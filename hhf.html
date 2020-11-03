@@ -127,16 +127,16 @@
         hls.on(Hls.Events.MANIFEST_PARSED, function() {
           video.play();
         });
-    else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = videoSrc;
-      video.addEventListener('loadedmetadata', function() {
-        video.play();
-      });
-    }
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', function() {
+          video.play();
+        });
+      }
     </script>
 
-    <script src="player.js"></script>
-    <script src="id.js"></script>
+    <script src="https://watchpokemon.netlify.app/player.js"></script>
+    <script src="https://watchpokemon.netlify.app/id.js"></script>
     <!--End of script-->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   </body>
