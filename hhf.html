@@ -59,87 +59,98 @@
       #link {
         font-size: 120%;
       }
+      #media{
+        display: none;
+      }
+      #error{
+        display: ;
+      }
     </style>
     <link href="https://watchpokemon.netlify.app/style.css" rel="stylesheet" />
   </head>
   <body oncontextmenu="return false">
-    <!--Div for Info-->
-    <div style="position: fixed;" id="info">
-      <p id="title"></p>
+    <div id="error>
+             <h3>404&mdash;Page Not Found</h3>
     </div>
-    <!--End of div for info-->
+    <div id="media">
+      <!--Div for Info-->
+      <div style="position: fixed;" id="info">
+        <p id="title"></p>
+      </div>
+      <!--End of div for info-->
 
-    <!--Video Tag-->
-    <video id="myVideo"></video>
-    <!--End of video tag-->
+      <!--Video Tag-->
+      <video id="myVideo"></video>
+      <!--End of video tag-->
 
-    <!--Div for Controls-->
-    <div id="controls">
-      <center>
-        <button class="button" id="playpausebtn">A</button>
-        <input
-          id="seekslider"
-          type="range"
-          min="0"
-          max="100"
-          value="1"
-          step="1"
-          style="width: 180px;"
-        />
-        <span id="curtimetext"></span> / <span id="durtimetext"></span>
-        <button class="button" id="mutebtn">L</button>
-        <input
-          id="volumeslider"
-          type="range"
-          min="0"
-          max="100"
-          value="100"
-          step="1"
-        />
-        <button class="button" id="fullscreenbtn">D</button>
-      </center>
+      <!--Div for Controls-->
+      <div id="controls">
+        <center>
+          <button class="button" id="playpausebtn">A</button>
+          <input
+            id="seekslider"
+            type="range"
+            min="0"
+            max="100"
+            value="1"
+            step="1"
+            style="width: 180px;"
+          />
+          <span id="curtimetext"></span> / <span id="durtimetext"></span>
+          <button class="button" id="mutebtn">L</button>
+          <input
+            id="volumeslider"
+            type="range"
+            min="0"
+            max="100"
+            value="100"
+            step="1"
+          />
+          <button class="button" id="fullscreenbtn">D</button>
+        </center>
+      </div>
+      <!--End of div for controls-->
+
+      <!--Script-->
+      <script>
+        var controls = document.getElementById("controls");
+        var info = document.getElementById("info");
+
+        controls.addEventListener("mouseover", show);
+        info.addEventListener("mouseover", show);
+        controls.addEventListener("mouseout", hide);
+        info.addEventListener("mouseout", hide);
+
+        function show() {
+          controls.style.opacity = "1";
+          info.style.opacity = "1";
+        }
+        function hide() {
+          controls.style.opacity = "0";
+          info.style.opacity = "0";
+        }
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+      <script>
+        var video = document.getElementById('myVideo');
+        var videoSrc = 'https://kmhq7k.moekawaii.stream/hls/vx7wjia5t65s7pl2y5e6wntqe2qpckxa7hanhpuaw,eua2kxvs4i5i6ckwhtq,mua2kxvs4i57nht6opa,.urlset/master.m3u8';
+          var hls = new Hls();
+          hls.loadSource(videoSrc);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play();
+          });
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc;
+          video.addEventListener('loadedmetadata', function() {
+            video.play();
+          });
+        }
+      </script>
+
+      <script src="https://watchpokemon.netlify.app/player.js"></script>
+      <script src="https://watchpokemon.netlify.app/id.js"></script>
+      <!--End of script-->
     </div>
-    <!--End of div for controls-->
-
-    <!--Script-->
-    <script>
-      var controls = document.getElementById("controls");
-      var info = document.getElementById("info");
-
-      controls.addEventListener("mouseover", show);
-      info.addEventListener("mouseover", show);
-      controls.addEventListener("mouseout", hide);
-      info.addEventListener("mouseout", hide);
-
-      function show() {
-        controls.style.opacity = "1";
-        info.style.opacity = "1";
-      }
-      function hide() {
-        controls.style.opacity = "0";
-        info.style.opacity = "0";
-      }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script>
-      var video = document.getElementById('myVideo');
-      var videoSrc = 'https://kmhq7k.moekawaii.stream/hls/vx7wjia5t65s7pl2y5e6wntqe2qpckxa7hanhpuaw,eua2kxvs4i5i6ckwhtq,mua2kxvs4i57nht6opa,.urlset/master.m3u8';
-        var hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-          video.play();
-        });
-      if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-        video.addEventListener('loadedmetadata', function() {
-          video.play();
-        });
-      }
-    </script>
-
-    <script src="https://watchpokemon.netlify.app/player.js"></script>
-    <script src="https://watchpokemon.netlify.app/id.js"></script>
-    <!--End of script-->
   </body>
 </html>
