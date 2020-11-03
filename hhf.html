@@ -70,7 +70,7 @@
     <!--End of div for info-->
 
     <!--Video Tag-->
-    <video id="myVideo"></video>
+    <video id="video"></video>
     <!--End of video tag-->
 
     <!--Div for Controls-->
@@ -122,14 +122,12 @@
       }
       var video = document.getElementById('myVideo');
       var videoSrc = 'https://kmhq7k.moekawaii.stream/hls/vx7wjia5t65s7pl2y5e6wntqe2qpckxa7hanhpuaw,eua2kxvs4i5i6ckwhtq,mua2kxvs4i57nht6opa,.urlset/master.m3u8';
-      if (Hls.isSupported()) {
         var hls = new Hls();
         hls.loadSource(videoSrc);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, function() {
           video.play();
         });
-      }
     else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = videoSrc;
       video.addEventListener('loadedmetadata', function() {
